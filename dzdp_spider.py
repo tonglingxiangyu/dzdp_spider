@@ -7,6 +7,24 @@ import time    #暂停程序，避免封号
 import random
 #from proxy import xdaili_proxy, general_proxy
 import re
+<<<<<<< HEAD
+import os
+
+start = 1  # 开始爬取的页数
+
+# 设置url、文件路径和cookie
+url='https://www.dianping.com/shop/G8pp74mGZtksud47/review_all'
+file = '1.csv'
+cookie = '_lxsdk_cuid=187993d2a59c8-08c88fc6fcba7-26031b51-280000-187993d2a59c8; _lxsdk=187993d2a59c8-08c88fc6fcba7-26031b51-280000-187993d2a59c8; WEBDFPID=1681903135511QKOGQUCfd79fef3d01d5e9aadc18ccd4d0c95072357-1681903135511-1681903135511QKOGQUCfd79fef3d01d5e9aadc18ccd4d0c95072357; _hc.v=82976948-a5c8-ec63-1c39-206548bd668f.1681903137; fspop=test; cy=427; cye=jiangyin; ll=7fd06e815b796be3df069dec7836c3df; Hm_lvt_602b80cf8079ae6591966cc70a3940e7=1681903192,1681976411; s_ViewType=10; _lx_utm=utm_source%3Dgoogle%26utm_medium%3Dorganic; dper=3ed3f7dc085c04db172e2a2856222c098b9951b56894057b520c7e0bb2372da36d00c30b6ce14ed1b533eb55f3b6de8b7b7305008c7875e17a41d6f7ff7f62ce; qruuid=454ae1e2-7193-4d68-bcf7-593c9a10527b; Hm_lpvt_602b80cf8079ae6591966cc70a3940e7=1681992621; _lxsdk_s=1879e5aece8-449-0ca-f0c%7C%7C3099'
+
+
+delay = 1  # 设置访问间隔
+
+f = open(file, mode='a', encoding='utf-8', newline='')
+if not os.path.exists(file):
+    writer = csv.writer(f)
+    writer.writerow(["用户名", "评论", "日期"])
+=======
 
 #设置url、文件路径和cookie
 url='https://www.dianping.com/shop/G8pp74mGZtksud47/review_all'
@@ -18,6 +36,7 @@ cookie='_lxsdk_cuid=187993d2a59c8-08c88fc6fcba7-26031b51-280000-187993d2a59c8; _
 f = open(file, mode='w', encoding='utf-8', newline='')
 writer = csv.writer(f)
 writer.writerow(["用户名", "评论", "日期"])
+>>>>>>> f432f666d904cc3cb63f2d8812f99f53f81fb0e3
 #f_html= open('1.txt', mode='r', encoding='utf-8', newline='')
 # csv_writer = csv.DictWriter(f, fieldnames=[
 #     '用户名',
@@ -26,10 +45,28 @@ writer.writerow(["用户名", "评论", "日期"])
 # ])
 # csv_writer.writeheader()
 
+<<<<<<< HEAD
+UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36'
+=======
+>>>>>>> f432f666d904cc3cb63f2d8812f99f53f81fb0e3
 headers = {"Cookie": cookie,
            'X-Requested-With': 'XMLHttpRequest',
             'host': 'www.dianping.com',
             'Upgrade-Insecure-Requests': '1',
+<<<<<<< HEAD
+           'User-Agent': UA
+            # 'User-Agent': UserAgent().random
+            }
+
+
+for i in range(start, 525):
+    urls = url + '/p' + str(i)
+    #response = requests.get(url=urls, headers=headers, proxies=proxies)
+    response = requests.get(url=urls, headers=headers)
+    print(response.status_code)
+    if(response.status_code != 200):
+        break
+=======
             'User-Agent': UserAgent().random
             }
 
@@ -38,6 +75,7 @@ for i in range(start,525):
     urls = url + '/p' + str(i)
     #response = requests.get(url=urls, headers=headers, proxies=proxies)
     response = requests.get(url=urls, headers=headers)
+>>>>>>> f432f666d904cc3cb63f2d8812f99f53f81fb0e3
     #print(response.text)
     f_html = response.text
     soup = BeautifulSoup(f_html, 'html.parser')
@@ -88,7 +126,11 @@ for i in range(start,525):
         #print(row.values())
     f.close()
     print('已爬取第' + str(i) + '页')
+<<<<<<< HEAD
+    time.sleep(delay + 5 * random.random())
+=======
     time.sleep(60 + 10 * random.random())
+>>>>>>> f432f666d904cc3cb63f2d8812f99f53f81fb0e3
 # selector = parsel.Selector(response.text)
 # title = selector.css('ul li .name::text').getall() #用户名
 # count = selector.css('ul li .review-words::text').getall() #评论
